@@ -3,7 +3,7 @@ apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 
 // 这个version是library的版本，更新后也需要更改这个值
-version = "1.0.6"
+version = "1.0.7"
 
 android {
     compileSdkVersion 23
@@ -33,7 +33,7 @@ dependencies {
     compile 'com.ysq.android.utils:singletoast:1.0.0'
     compile 'com.ysq.android.utils:androidlogger:1.0.0'
     compile 'com.ysq.android.utils:crashlog:1.0.2'
-    compile 'com.ysq.android.utils:httputils:1.0.3'
+    compile 'com.ysq.android.utils:httputils:1.0.4'
     compile 'com.ysq.android.utils:singleprogressdialog:1.0.1'
     compile 'com.ysq.android.utils:tools:1.0.0'
     compile 'com.ysq.android.utils:choicedialogfragment:1.0.0'
