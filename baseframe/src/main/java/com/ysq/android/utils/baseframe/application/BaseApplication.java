@@ -38,7 +38,7 @@ public class BaseApplication extends Application {
         super.onCreate();
         Logger.init(getLogTag()).logLevel(LogLevel.FULL);
         if (enableCrashLog()) {
-            CrashLogHandlerUtils.getInstance(this);
+            CrashLogHandlerUtils.getInstance(this).start();
         }
         if (getMqttClient() != null) {
             isClientConnecting = new AtomicBoolean(false);

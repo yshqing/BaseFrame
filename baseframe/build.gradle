@@ -3,15 +3,14 @@ apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 
 // 这个version是library的版本，更新后也需要更改这个值
-version = "1.0.7"
+version = "1.1.0"
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.3"
-
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
     defaultConfig {
         minSdkVersion 15
-        targetSdkVersion 23
+        targetSdkVersion 25
         versionCode 1
         versionName version
     }
@@ -24,7 +23,6 @@ android {
     lintOptions {
         abortOnError false
     }
-
 }
 
 dependencies {
@@ -33,12 +31,11 @@ dependencies {
     compile 'com.ysq.android.utils:singletoast:1.0.0'
     compile 'com.ysq.android.utils:androidlogger:1.0.0'
     compile 'com.ysq.android.utils:crashlog:1.0.2'
-    compile 'com.ysq.android.utils:httputils:1.0.4'
+    compile 'com.ysq.android.utils:httputils:1.0.6'
     compile 'com.ysq.android.utils:singleprogressdialog:1.0.1'
     compile 'com.ysq.android.utils:tools:1.0.0'
     compile 'com.ysq.android.utils:choicedialogfragment:1.0.0'
 }
-
 
 def siteUrl = 'https://github.com/yshqing/BaseFrame'// 项目的主页
 def gitUrl = 'https://github.com/yshqing/BaseFrame.git'// Git仓库的url
