@@ -22,6 +22,7 @@ import org.eclipse.paho.client.mqttv3.MqttCallback;
 import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.eclipse.paho.client.mqttv3.MqttException;
 
+import java.io.File;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class BaseApplication extends Application {
@@ -38,7 +39,14 @@ public class BaseApplication extends Application {
         super.onCreate();
         Logger.init(getLogTag()).logLevel(LogLevel.FULL);
         if (enableCrashLog()) {
-            CrashLogHandlerUtils.getInstance(this).start();
+            if (getCrashLogSaveDir() != null) {
+                CrashLogHandlerUtils.getInstance(this).setSavePath(getCrashLogSaveDir());
+            }
+            try {
+                CrashLogHandlerUtils.getInstance(this).start();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
         if (getMqttClient() != null) {
             isClientConnecting = new AtomicBoolean(false);
@@ -51,6 +59,11 @@ public class BaseApplication extends Application {
     protected boolean enableCrashLog() {
         return true;
     }
+
+    protected File getCrashLogSaveDir() {
+        return null;
+    }
+
     protected String getLogTag() {
         return "YLogTag";
     }
