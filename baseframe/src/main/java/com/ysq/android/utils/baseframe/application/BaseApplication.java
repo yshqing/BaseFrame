@@ -72,7 +72,7 @@ public class BaseApplication extends Application {
         return LogLevel.FULL;
     }
 
-    private File getErrorLogSaveDir() {
+    protected File getErrorLogSaveDir() {
         return null;
     }
 
