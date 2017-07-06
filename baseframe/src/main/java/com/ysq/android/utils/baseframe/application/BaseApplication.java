@@ -37,7 +37,7 @@ public class BaseApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        Logger.init(getLogTag()).logLevel(LogLevel.FULL);
+        Logger.init(getLogTag()).errorLogFile(getErrorLogSaveDir()).logLevel(getLogLevel());
         if (enableCrashLog()) {
             if (getCrashLogSaveDir() != null) {
                 CrashLogHandlerUtils.getInstance(this).setSavePath(getCrashLogSaveDir());
@@ -66,6 +66,14 @@ public class BaseApplication extends Application {
 
     protected String getLogTag() {
         return "YLogTag";
+    }
+
+    protected LogLevel getLogLevel() {
+        return LogLevel.FULL;
+    }
+
+    private File getErrorLogSaveDir() {
+        return null;
     }
 
     protected MqttAndroidClient getMqttClient() {
