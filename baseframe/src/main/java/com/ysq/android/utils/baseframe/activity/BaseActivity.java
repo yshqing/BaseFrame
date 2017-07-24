@@ -32,11 +32,15 @@ public class BaseActivity extends Activity {
     }
 
     protected void showProgressDialog() {
+        showProgressDialog(null);
+    }
+
+    protected void showProgressDialog(String text) {
         hideProgressDialog();
         if (mProgressDialog == null) {
             mProgressDialog = SingleProgressDialog.getInstance(this);
         }
-        mProgressDialog.show();
+        mProgressDialog.show(text);
     }
 
     protected void hideProgressDialog() {
