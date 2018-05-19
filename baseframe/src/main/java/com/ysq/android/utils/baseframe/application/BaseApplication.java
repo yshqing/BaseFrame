@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
+import android.os.Environment;
 
 //import com.android.ysq.utils.YNetWorkUtils;
 import com.ysq.android.utils.crashlog.CrashLogHandlerUtils;
@@ -61,7 +62,7 @@ public class BaseApplication extends Application {
     }
 
     protected File getCrashLogSaveDir() {
-        return null;
+        return getDefaultFilesDir();
     }
 
     protected String getLogTag() {
@@ -73,7 +74,7 @@ public class BaseApplication extends Application {
     }
 
     protected File getErrorLogSaveDir() {
-        return null;
+        return getDefaultFilesDir();
     }
 
     protected MqttAndroidClient getMqttClient() {
@@ -161,5 +162,12 @@ public class BaseApplication extends Application {
         PendingIntent pi = PendingIntent.getBroadcast(this, 0, intent, 0);
         mAlarmManager.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + getMqttKeepAliveTime() * 1000,
                 getMqttKeepAliveTime() * 1000, pi);
+    }
+
+    private File getDefaultFilesDir() {
+        if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState()) ) {
+            return getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS);
+        }
+        return getFilesDir();
     }
 }
